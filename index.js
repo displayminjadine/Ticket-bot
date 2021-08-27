@@ -4,17 +4,13 @@ const client = new Discord.Client();
 const { readdirSync } = require('fs');
 const { join } = require('path')
 
-const token = "PUT YOUR TOKEN HERE";
+const token = "ODEwMTUyODcxNTgzNjc4NDk1.YCffqA.dRl7MjvfCZfpA47BL1wu1QWFNME";
 const prefix = "!";
-
-//ACTIVITY FOR THE BOT
 
 client.on('ready', () => {
     client.user.setActivity("Made by August#6458 || displayminjadine on yt");
     console.log("Bot is ready!")
     });
-
-//COMMAND HANDLER
 
 client.commands = new Discord.Collection();
 const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
@@ -39,8 +35,6 @@ client.on("message", async message => {
   }
 })
 
-//Detecting when someone reacts to the ticket
-
 client.on('messageReactionAdd', async (reaction, user) => {
 	const enmap = require('enmap');
 	const Discord = require('discord.js')
@@ -63,8 +57,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
  if (reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
   reaction.users.remove(user);
 
-   //prevents spam
-   
  if (client.db.get(`cooldowns.ticket.${user.id}`) + 6000 > Date.now()) {
      return user.send("You can't make a ticket for another` 5 minutes`").catch(() => console.log("can't dm this user "+user.user.tag+""));
    }
@@ -89,7 +81,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
      `<@${user.id}> Welcome!`,
      new Discord.MessageEmbed()
       .setDescription(
-       'Support will be with you shortly.\n \n '+prefix+' close to close the ticket.'
+       'Support will be with you shortly.\n \n ;close to close the ticket.'
       )
       .setColor('00f8ff')
       .setFooter(
