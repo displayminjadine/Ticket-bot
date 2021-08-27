@@ -4,7 +4,7 @@ const client = new Discord.Client();
 const { readdirSync } = require('fs');
 const { join } = require('path')
 
-const token = "ODEwMTUyODcxNTgzNjc4NDk1.YCffqA.dRl7MjvfCZfpA47BL1wu1QWFNME";
+const token = "YOUR BOT TOKEN HERE";
 const prefix = "!";
 
 client.on('ready', () => {
